@@ -1,0 +1,79 @@
+﻿@page
+@model VerwaltungSchuelerdaten.Pages.Schueler.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>SchuelerDaten</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SchuelerDaten.Vorname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SchuelerDaten.Vorname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SchuelerDaten.Nachname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SchuelerDaten.Nachname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SchuelerDaten.Geburtsdatum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SchuelerDaten.Geburtsdatum)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SchuelerDaten.EMail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SchuelerDaten.EMail)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SchuelerDaten.Telefonnummer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SchuelerDaten.Telefonnummer)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SchuelerDaten.Konfession)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SchuelerDaten.Konfession)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SchuelerDaten.Staatsangehoerigkeit)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SchuelerDaten.Staatsangehoerigkeit)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SchuelerDaten.ZweiteStaatsangehoerigkeit)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SchuelerDaten.ZweiteStaatsangehoerigkeit)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SchuelerDaten.Anmeldedatum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SchuelerDaten.Anmeldedatum)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SchuelerDaten.Kommentar)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SchuelerDaten.Kommentar)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.SchuelerDaten.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
