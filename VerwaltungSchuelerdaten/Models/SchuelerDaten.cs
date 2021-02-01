@@ -37,6 +37,8 @@ namespace VerwaltungSchuelerdaten.Models
 
     public static List<string> Konfessionen { get; set; } = 
       new List<string> { "katholisch", "evangelisch", "islam", "keine" };
+   public static List<string> Laender { get; set; } = 
+      new List<string> { "Deutschland", "Frankreich", "Schweiz", "Luxemburg" };
 
 
   }
