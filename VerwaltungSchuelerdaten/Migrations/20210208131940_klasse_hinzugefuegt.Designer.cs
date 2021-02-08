@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VerwaltungSchuelerdaten.Data;
 
 namespace VerwaltungSchuelerdaten.Migrations
 {
     [DbContext(typeof(VerwaltungSchuelerdatenContext))]
-    partial class VerwaltungSchuelerdatenContextModelSnapshot : ModelSnapshot
+    [Migration("20210208131940_klasse_hinzugefuegt")]
+    partial class klasse_hinzugefuegt
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

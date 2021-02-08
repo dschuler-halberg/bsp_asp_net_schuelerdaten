@@ -9,6 +9,7 @@
 
 <h1>Schülerdaten anlegen</h1>
 
+<h1>@Model.Name</h1>
 <hr />
 <div class="row">
   <div class="col-md-4">
@@ -67,14 +68,21 @@
       </div>
       <div class="form-group">
         <label asp-for="SchuelerDaten.ZweiteStaatsangehoerigkeit" class="control-label"></label>
-        <input asp-for="SchuelerDaten.ZweiteStaatsangehoerigkeit" class="form-control" />
+           @Html.DropDownListFor(
+                             model => model.SchuelerDaten.ZweiteStaatsangehoerigkeit,
+                             new SelectList(SchuelerDaten.LaenderZweiteStaatsangehoerigkeit),
+                             new { @class = "form-control" }
+                             )
+
+        @*<input asp-for="SchuelerDaten.ZweiteStaatsangehoerigkeit" class="form-control" />*@
+
         <span asp-validation-for="SchuelerDaten.ZweiteStaatsangehoerigkeit" class="text-danger"></span>
       </div>
-      <div class="form-group">
+      @*<div class="form-group">
         <label asp-for="SchuelerDaten.Anmeldedatum" class="control-label"></label>
         <input asp-for="SchuelerDaten.Anmeldedatum" class="form-control" />
         <span asp-validation-for="SchuelerDaten.Anmeldedatum" class="text-danger"></span>
-      </div>
+      </div>*@
       <div class="form-group">
         <label asp-for="SchuelerDaten.Kommentar" class="control-label"></label>
         <input asp-for="SchuelerDaten.Kommentar" class="form-control" />

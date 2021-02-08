@@ -15,5 +15,7 @@ namespace VerwaltungSchuelerdaten.Data
         }
 
         public DbSet<VerwaltungSchuelerdaten.Models.SchuelerDaten> SchuelerDaten { get; set; }
+
+        public DbSet<VerwaltungSchuelerdaten.Models.Klasse> Klasse { get; set; }
     }
 }
