@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -29,10 +30,27 @@ namespace VerwaltungSchuelerdaten.Pages
       _context = context;
     }
 
+    [BindProperty(SupportsGet = true)]
+    public string Suche { get; set; }
+
+    [BindProperty(SupportsGet = true)]
+    public string SucheVorname { get; set; }
+
+    public SelectList Vornamen { get; set; }
+
 
     public void OnGet()
     {
       SchuelerDaten = _context.SchuelerDaten.ToList();
+      Vornamen = new SelectList(SchuelerDaten.Select(x => x.Vorname).Distinct().ToList());
+      if (!string.IsNullOrEmpty(Suche))
+      {
+        SchuelerDaten = SchuelerDaten.Where(x => x.Nachname.Contains(Suche)).ToList();
+      }
+      if (!string.IsNullOrEmpty(SucheVorname))
+      {
+        SchuelerDaten = SchuelerDaten.Where(x => x.Vorname.Contains(SucheVorname)).ToList();
+      }
     }
   }
 }
