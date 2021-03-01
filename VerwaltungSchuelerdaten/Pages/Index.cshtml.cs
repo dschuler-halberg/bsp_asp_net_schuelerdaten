@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -15,28 +16,28 @@ namespace VerwaltungSchuelerdaten.Pages
 {
   public class IndexModel : PageModel
   {
-    private readonly ILogger<IndexModel> _logger;
 
     public IList<SchuelerDaten> SchuelerDaten { get; set; }
 
-    //public IndexModel(ILogger<IndexModel> logger)
-    //{
-    //  _logger = logger;
-    //}
     private readonly VerwaltungSchuelerdaten.Data.VerwaltungSchuelerdatenContext _context;
 
- 
     public IndexModel(VerwaltungSchuelerdaten.Data.VerwaltungSchuelerdatenContext context)
     {
       _context = context;
     }
 
+    [BindProperty(SupportsGet = true)]
+    public string Suche { get; set; }
+
+    [BindProperty(SupportsGet = true)]
+    public string SucheVorname { get; set; }
+
+    public SelectList Vornamen { get; set; }
+
 
     public void OnGet()
     {
       SchuelerDaten = _context.SchuelerDaten.Include(x => x.Klasse).ToList();
-
-      
     }
   }
 }

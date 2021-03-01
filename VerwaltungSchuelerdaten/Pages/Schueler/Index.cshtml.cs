@@ -15,38 +15,42 @@ namespace VerwaltungSchuelerdaten.Pages.Schueler
   {
     private readonly VerwaltungSchuelerdaten.Data.VerwaltungSchuelerdatenContext _context;
 
-    public SelectList FirstNames { get; set; }
-
     public IndexModel(VerwaltungSchuelerdaten.Data.VerwaltungSchuelerdatenContext context)
     {
       _context = context;
-
-      FirstNames = new SelectList(_context.SchuelerDaten.Select(x => x.Vorname).Distinct().ToList());
     }
 
     public IList<SchuelerDaten> SchuelerDaten { get; set; }
 
     [BindProperty(SupportsGet = true)]
-    public string SearchString { get; set; }
-
+    public string Suche { get; set; }
 
     [BindProperty(SupportsGet = true)]
-    public string SearchStringFirstname { get; set; }
+    public string SucheKonfession { get; set; }
+
+    public SelectList Konfessionen { get; set; }
+
 
     public async Task OnGetAsync()
     {
-      SchuelerDaten = await _context.SchuelerDaten.Include(x=>x.Klasse).ToListAsync();
-      string s = SchuelerDaten.First().Klasse.Name;
-      if (!string.IsNullOrEmpty(SearchString))
+      SchuelerDaten = await _context.SchuelerDaten.ToListAsync();
+  
+      Konfessionen = new SelectList(SchuelerDaten.Select(x => x.Konfession).Distinct().ToList());
+      if (!string.IsNullOrEmpty(Suche))
       {
-        SchuelerDaten = SchuelerDaten.Where(x => x.Nachname.Contains(SearchString)).ToList();
+        SchuelerDaten = SchuelerDaten.Where(x =>
+        x.Vorname.ToLower().Contains(Suche.ToLower()) ||
+        x.Nachname.ToLower().Contains(Suche.ToLower()) ||
+        x.EMail.ToLower().Contains(Suche.ToLower()) ||
+        x.Telefonnummer.ToLower().Contains(Suche.ToLower())
+        ).ToList();
+
       }
 
-      if (!string.IsNullOrEmpty(SearchStringFirstname))
+      if (!string.IsNullOrEmpty(SucheKonfession))
       {
-        SchuelerDaten = SchuelerDaten.Where(x => x.Vorname.Contains(SearchStringFirstname)).ToList();
+        SchuelerDaten = SchuelerDaten.Where(x => x.Konfession.ToLower().Contains(SucheKonfession.ToLower())).ToList();
       }
-
     }
   }
 }
