@@ -5,18 +5,17 @@ using System.Threading.Tasks;
 
 namespace VerwaltungSchuelerdaten.Models
 {
-  public class Klasse
+  public class Note
   {
 
     public int ID { get; set; }
 
-    public string Name { get; set; }
+    public int Notenwert { get; set; }
 
     public string Beschreibung { get; set; }
+      
+    public virtual SchuelerDaten Schueler { get; set; }
 
-    public virtual SchuelerDaten KlassenSprecherIn { get; set; }
-
-    public virtual ICollection<SchuelerDaten> Schueler {get; set;}
 
   }
 }

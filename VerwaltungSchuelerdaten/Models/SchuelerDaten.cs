@@ -13,10 +13,14 @@ namespace VerwaltungSchuelerdaten.Models
 
     public int ID { get; set; }
 
+    [Required]
     public string Vorname { get; set; }
+
+    [Required(ErrorMessage = "Bitte geben Sie einen Nachnamen an")]
     public string Nachname { get; set; }
 
     [DataType(DataType.Date)]
+    [Required(ErrorMessage = "Bitte geben Sie ein Geburtsdatum an")]
     public DateTime Geburtsdatum { get; set; }
 
 
@@ -35,6 +39,10 @@ namespace VerwaltungSchuelerdaten.Models
     [DataType(DataType.Date)]
     public DateTime Anmeldedatum { get; set; } 
     public string Kommentar { get; set; }
+
+    public virtual Klasse Klasse { get; set; }
+
+    public virtual List<Note> Noten { get; set; } 
 
     public static List<string> Konfessionen { get; set; } =
       new List<string> { "katholisch", "evangelisch", "islam", "keine" };

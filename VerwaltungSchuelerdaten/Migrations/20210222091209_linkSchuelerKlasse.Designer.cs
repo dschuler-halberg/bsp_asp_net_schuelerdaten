@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VerwaltungSchuelerdaten.Data;
 
 namespace VerwaltungSchuelerdaten.Migrations
 {
     [DbContext(typeof(VerwaltungSchuelerdatenContext))]
-    partial class VerwaltungSchuelerdatenContextModelSnapshot : ModelSnapshot
+    [Migration("20210222091209_linkSchuelerKlasse")]
+    partial class linkSchuelerKlasse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,29 +44,6 @@ namespace VerwaltungSchuelerdaten.Migrations
                     b.ToTable("Klasse");
                 });
 
-            modelBuilder.Entity("VerwaltungSchuelerdaten.Models.Note", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Beschreibung")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Notenwert")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SchuelerID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("SchuelerID");
-
-                    b.ToTable("Note");
-                });
-
             modelBuilder.Entity("VerwaltungSchuelerdaten.Models.SchuelerDaten", b =>
                 {
                     b.Property<int>("ID")
@@ -91,7 +70,6 @@ namespace VerwaltungSchuelerdaten.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nachname")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Staatsangehoerigkeit")
@@ -101,7 +79,6 @@ namespace VerwaltungSchuelerdaten.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Vorname")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ZweiteStaatsangehoerigkeit")
@@ -119,13 +96,6 @@ namespace VerwaltungSchuelerdaten.Migrations
                     b.HasOne("VerwaltungSchuelerdaten.Models.SchuelerDaten", "KlassenSprecherIn")
                         .WithMany()
                         .HasForeignKey("KlassenSprecherInID");
-                });
-
-            modelBuilder.Entity("VerwaltungSchuelerdaten.Models.Note", b =>
-                {
-                    b.HasOne("VerwaltungSchuelerdaten.Models.SchuelerDaten", "Schueler")
-                        .WithMany("Noten")
-                        .HasForeignKey("SchuelerID");
                 });
 
             modelBuilder.Entity("VerwaltungSchuelerdaten.Models.SchuelerDaten", b =>

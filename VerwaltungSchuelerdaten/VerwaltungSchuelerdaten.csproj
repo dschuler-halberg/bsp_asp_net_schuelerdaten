@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20210208131454_klasse_hinzugefuegt.cs" />
     <Compile Remove="Migrations\20210208131454_klasse_hinzugefuegt.Designer.cs" />
+    <Compile Remove="Migrations\20210222102816_debugRelation.cs" />
+    <Compile Remove="Migrations\20210222102816_debugRelation.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

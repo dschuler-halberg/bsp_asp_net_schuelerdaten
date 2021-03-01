@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace VerwaltungSchuelerdaten.Pages
     //}
     private readonly VerwaltungSchuelerdaten.Data.VerwaltungSchuelerdatenContext _context;
 
+ 
     public IndexModel(VerwaltungSchuelerdaten.Data.VerwaltungSchuelerdatenContext context)
     {
       _context = context;
@@ -32,7 +34,9 @@ namespace VerwaltungSchuelerdaten.Pages
 
     public void OnGet()
     {
-      SchuelerDaten = _context.SchuelerDaten.ToList();
+      SchuelerDaten = _context.SchuelerDaten.Include(x => x.Klasse).ToList();
+
+      
     }
   }
 }

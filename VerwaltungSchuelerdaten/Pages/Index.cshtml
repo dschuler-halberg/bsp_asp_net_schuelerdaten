@@ -23,6 +23,10 @@
         <th>
           @Html.DisplayNameFor(model => model.SchuelerDaten[0].Nachname)
         </th>
+        <th>
+          Klasse
+        </th>
+
         <th></th>
       </tr>
     </thead>
@@ -40,7 +44,11 @@
             @Html.DisplayFor(modelItem => item.Nachname)
           </td>
           <td>
-            <a asp-page="Schueler/Details" asp-route-id="@item.ID">Details</a> 
+            @Html.DisplayFor(modelItem => item.Klasse.Name)
+          </td>
+
+          <td>
+            <a asp-page="Schueler/Details" asp-route-id="@item.ID">Details</a>
           </td>
         </tr>
       }

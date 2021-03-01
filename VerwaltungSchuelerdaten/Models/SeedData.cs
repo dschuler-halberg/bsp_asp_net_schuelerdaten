@@ -19,11 +19,18 @@ namespace VerwaltungSchuelerdaten.Models
           serviceProvider.GetRequiredService<
               DbContextOptions<VerwaltungSchuelerdatenContext>>()))
       {
-        // Look for any movies.
+        // Look for any entries.
         if (context.SchuelerDaten.Any())
         {
           return;   // DB has been seeded
         }
+
+        Klasse klasse1 = new Klasse()
+        {
+          Name = "WI19Z1a",
+          Beschreibung = "Oberstufe der HBSWI Anwendungsentwickler"
+        };
+
 
         SchuelerDaten sd_alice = new SchuelerDaten()
         {
@@ -34,7 +41,16 @@ namespace VerwaltungSchuelerdaten.Models
           Anmeldedatum = DateTime.Now,
           Konfession = "keine",
           Staatsangehoerigkeit = "Deutsch",
-          Telefonnummer = "123 456 789"
+          Telefonnummer = "123 456 789",
+          Klasse = klasse1
+
+        };
+
+        Note noteAlice = new Note()
+        {
+          Notenwert = 1,
+          Beschreibung = "Klassenarbeit Programmierung",
+          Schueler = sd_alice
         };
 
 
@@ -47,13 +63,38 @@ namespace VerwaltungSchuelerdaten.Models
           Anmeldedatum = DateTime.Now,
           Konfession = "evangelisch",
           Staatsangehoerigkeit = "Frankreich",
-          Telefonnummer = "1123 456 789"
+          Telefonnummer = "1123 456 789",
+          Klasse = klasse1
+        };
+
+        Note noteBob = new Note()
+        {
+          Notenwert = 2,
+          Beschreibung = "Klassenarbeit Programmierung",
+          Schueler = sd_bob
         };
 
 
+        SchuelerDaten sd_carol = new SchuelerDaten()
+        {
+          Vorname = "Carol",
+          Nachname = "Cook",
+          Geburtsdatum = DateTime.Now.AddDays(-6000),
+          EMail = "c.cook@email.de",
+          Anmeldedatum = DateTime.Now,
+          Konfession = "evangelisch",
+          Staatsangehoerigkeit = "Türkei",
+          Telefonnummer = "23894",
+          Klasse = klasse1
+        };
+
+        sd_alice.Noten = new List<Note>();
+        sd_alice.Noten.Add(noteAlice);
+
         context.SchuelerDaten.Add(sd_alice);
         context.SchuelerDaten.Add(sd_bob);
-        // Alternativ:
+        context.SchuelerDaten.Add(sd_carol);
+           // Alternativ:
         // context.AddRange(sd_alice, sd_bob);
 
         context.SaveChanges();
