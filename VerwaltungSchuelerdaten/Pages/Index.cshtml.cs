@@ -26,18 +26,16 @@ namespace VerwaltungSchuelerdaten.Pages
       _context = context;
     }
 
-    [BindProperty(SupportsGet = true)]
-    public string Suche { get; set; }
-
-    [BindProperty(SupportsGet = true)]
-    public string SucheVorname { get; set; }
-
-    public SelectList Vornamen { get; set; }
-
 
     public void OnGet()
     {
-      SchuelerDaten = _context.SchuelerDaten.Include(x => x.Klasse).ToList();
+      SchuelerDaten = _context.SchuelerDaten.
+        Include(x => x.Klasse).
+        Include(x => x.Adresse).
+        ToList();
+
+      //Note n  = _context.Note.FirstOrDefault();
+      //ViewData["note"] = n.Beschreibung;
     }
   }
 }

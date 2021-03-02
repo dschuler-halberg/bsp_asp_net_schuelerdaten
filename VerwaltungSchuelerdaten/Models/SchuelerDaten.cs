@@ -25,6 +25,7 @@ namespace VerwaltungSchuelerdaten.Models
 
 
     [Display(Name = "E-Mail Adresse")]
+    [EmailAddress(ErrorMessage = "Geben Sie bitte eine gültige E-Mail-Adresse ein.")]
     public string EMail { get; set; }
     public string Telefonnummer { get; set; }
     public string Konfession { get; set; }
@@ -43,6 +44,8 @@ namespace VerwaltungSchuelerdaten.Models
     public virtual Klasse Klasse { get; set; }
 
     public virtual List<Note> Noten { get; set; } 
+
+    public Adresse Adresse { get; set; }
 
     public static List<string> Konfessionen { get; set; } =
       new List<string> { "katholisch", "evangelisch", "islam", "keine" };

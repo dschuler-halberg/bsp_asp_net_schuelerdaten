@@ -32,6 +32,12 @@ namespace VerwaltungSchuelerdaten.Models
         };
 
 
+        Adresse adresseFuerAlle = new Adresse()
+        {
+          Ort = "Saarbrücken",
+          Strasse = "Mainzerstr."
+        };
+
         SchuelerDaten sd_alice = new SchuelerDaten()
         {
           Vorname = "Alice",
@@ -42,7 +48,8 @@ namespace VerwaltungSchuelerdaten.Models
           Konfession = "keine",
           Staatsangehoerigkeit = "Deutsch",
           Telefonnummer = "123 456 789",
-          Klasse = klasse1
+          Klasse = klasse1,
+          Adresse = adresseFuerAlle
 
         };
 
@@ -64,7 +71,8 @@ namespace VerwaltungSchuelerdaten.Models
           Konfession = "evangelisch",
           Staatsangehoerigkeit = "Frankreich",
           Telefonnummer = "1123 456 789",
-          Klasse = klasse1
+          Klasse = klasse1,
+          Adresse = adresseFuerAlle
         };
 
         Note noteBob = new Note()
@@ -85,7 +93,8 @@ namespace VerwaltungSchuelerdaten.Models
           Konfession = "evangelisch",
           Staatsangehoerigkeit = "Türkei",
           Telefonnummer = "23894",
-          Klasse = klasse1
+          Klasse = klasse1,
+          Adresse = adresseFuerAlle
         };
 
         sd_alice.Noten = new List<Note>();
@@ -94,7 +103,7 @@ namespace VerwaltungSchuelerdaten.Models
         context.SchuelerDaten.Add(sd_alice);
         context.SchuelerDaten.Add(sd_bob);
         context.SchuelerDaten.Add(sd_carol);
-           // Alternativ:
+        // Alternativ:
         // context.AddRange(sd_alice, sd_bob);
 
         context.SaveChanges();

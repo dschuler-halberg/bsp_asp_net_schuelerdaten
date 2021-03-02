@@ -7,6 +7,7 @@
 <div class="text-center">
   <h1 class="display-4">Wilkommen!</h1>
 
+  @*@ViewData["note"]*@
 
   <table class="table">
     <thead>
@@ -22,6 +23,9 @@
         </th>
         <th>
           Klasse
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.SchuelerDaten[0].Adresse.Ort)
         </th>
 
         <th></th>
@@ -42,6 +46,9 @@
           </td>
           <td>
             @Html.DisplayFor(modelItem => item.Klasse.Name)
+          </td>
+          <td>
+            @Html.DisplayFor(modelItem => item.Adresse.Ort)
           </td>
 
           <td>
