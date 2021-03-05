@@ -29,6 +29,8 @@ namespace VerwaltungSchuelerdaten.Data
 
     public DbSet<VerwaltungSchuelerdaten.Models.Klasse> Klasse { get; set; }
     public DbSet<VerwaltungSchuelerdaten.Models.Note> Note { get; set; }
+    public DbSet<VerwaltungSchuelerdaten.Models.Image> Images { get; set; }
+    public DbSet<VerwaltungSchuelerdaten.Models.Video> Videos { get; set; }
 
     
   }

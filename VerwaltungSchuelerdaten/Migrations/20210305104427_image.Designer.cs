@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VerwaltungSchuelerdaten.Data;
 
 namespace VerwaltungSchuelerdaten.Migrations
 {
     [DbContext(typeof(VerwaltungSchuelerdatenContext))]
-    partial class VerwaltungSchuelerdatenContextModelSnapshot : ModelSnapshot
+    [Migration("20210305104427_image")]
+    partial class image
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,24 +155,6 @@ namespace VerwaltungSchuelerdaten.Migrations
                     b.HasIndex("KlasseID");
 
                     b.ToTable("SchuelerDaten");
-                });
-
-            modelBuilder.Entity("VerwaltungSchuelerdaten.Models.Video", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<byte[]>("VideoData")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("VideoTitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Videos");
                 });
 
             modelBuilder.Entity("VerwaltungSchuelerdaten.Models.Klasse", b =>

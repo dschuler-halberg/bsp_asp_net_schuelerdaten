@@ -1,0 +1,12 @@
+﻿@page
+@model VerwaltungSchuelerdaten.Pages.UploadVideo.ViewVideosModel
+
+@{
+  ViewData["Title"] = "Videos anzeigen";
+}
+
+<h1>@Model.Video.VideoTitle</h1>
+<video src="@Model.VideoDataBase64" controls />
+
+
+
