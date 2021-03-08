@@ -5,8 +5,14 @@
   ViewData["Title"] = "Videos anzeigen";
 }
 
-<h1>@Model.Video.VideoTitle</h1>
-<video src="@Model.VideoDataBase64" controls />
+    <h1>Alle Videos</h1>
+@foreach (string s in Model.VideoDataBase64)
+{
+  <div>
+    <h1>Video</h1>
+    <video src="@s" controls height="400" />
+  </div>
+}
 
 
 

@@ -36,7 +36,7 @@ namespace VerwaltungSchuelerdaten.Pages.Klasse
                 return Page();
             }
 
-            _context.Klasse.Add(Klasse);
+            _context.Klassen.Add(Klasse);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

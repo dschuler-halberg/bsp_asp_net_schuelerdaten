@@ -29,7 +29,7 @@ namespace VerwaltungSchuelerdaten.Pages.Klasse
                 return NotFound();
             }
 
-            Klasse = await _context.Klasse.FirstOrDefaultAsync(m => m.ID == id);
+            Klasse = await _context.Klassen.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Klasse == null)
             {
@@ -45,11 +45,11 @@ namespace VerwaltungSchuelerdaten.Pages.Klasse
                 return NotFound();
             }
 
-            Klasse = await _context.Klasse.FindAsync(id);
+            Klasse = await _context.Klassen.FindAsync(id);
 
             if (Klasse != null)
             {
-                _context.Klasse.Remove(Klasse);
+                _context.Klassen.Remove(Klasse);
                 await _context.SaveChangesAsync();
             }
 

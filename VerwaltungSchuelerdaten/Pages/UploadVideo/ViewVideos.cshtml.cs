@@ -17,16 +17,18 @@ namespace VerwaltungSchuelerdaten.Pages.UploadVideo
       _context = context;
     }
 
-    public string VideoDataBase64 { get; set; }
+    public List<string> VideoDataBase64 { get; set; } = new List<string>();
     
-    public Video Video { get; set; }
+    public List<Video> Videos { get; set; }
     public void OnGet()
     {
-      Video v = _context.Videos.FirstOrDefault();
-      Video = v;
-      string VideoBase64Data = Convert.ToBase64String(v.VideoData);
-      string VideoDataURL = string.Format("data:Video/webm;base64,{0}", VideoBase64Data);
-      VideoDataBase64 = VideoDataURL;
+      Videos = _context.Videos.ToList();
+      foreach (Video v in Videos)
+      {
+        string VideoBase64Data = Convert.ToBase64String(v.VideoData);
+        string VideoDataURL = string.Format("data:Video/webm;base64,{0}", VideoBase64Data);
+        VideoDataBase64.Add(VideoDataURL);
+      }
     }
   }
 }

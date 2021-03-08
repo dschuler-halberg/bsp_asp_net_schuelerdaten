@@ -28,7 +28,7 @@ namespace VerwaltungSchuelerdaten.Pages.Klasse
                 return NotFound();
             }
 
-            Klasse = await _context.Klasse.FirstOrDefaultAsync(m => m.ID == id);
+            Klasse = await _context.Klassen.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Klasse == null)
             {

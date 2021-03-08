@@ -23,7 +23,7 @@ namespace VerwaltungSchuelerdaten.Pages.Klasse
 
         public async Task OnGetAsync()
         {
-            Klasse = await _context.Klasse.ToListAsync();
+            Klasse = await _context.Klassen.ToListAsync();
         }
     }
 }

@@ -30,7 +30,7 @@ namespace VerwaltungSchuelerdaten.Pages.Klasse
                 return NotFound();
             }
 
-            Klasse = await _context.Klasse.FirstOrDefaultAsync(m => m.ID == id);
+            Klasse = await _context.Klassen.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Klasse == null)
             {
@@ -71,7 +71,7 @@ namespace VerwaltungSchuelerdaten.Pages.Klasse
 
         private bool KlasseExists(int id)
         {
-            return _context.Klasse.Any(e => e.ID == id);
+            return _context.Klassen.Any(e => e.ID == id);
         }
     }
 }
